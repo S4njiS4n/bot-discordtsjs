@@ -10,8 +10,17 @@ client.on("message", msg => { // traitement de l'évent NouveauMessage
   if (cmd === `${PREFIX}pong`) msg.channel.send("Ping!");
 });
 
+client.on("guildMemberAdd", member => {
+  member.send("Salut à toi!");
+  const channel = client.channels.find(r => r.name === "general-bot");
+  channel.send(`${member} a rejoint le serveur !`);
+});
+
 client.login(TOKEN); // login du client instancié du bot au serveur discord
 
 // -----------------------------------
 
 client.on("ready", () => console.log("Je suis prêt !")); // traitement de l'évent BotOnline
+client.on("error", console.error); // traitement de l'évent Erreur
+client.on("warn", console.warn); // traitement de l'évent Avertissement
+client.on("debug", console.debug); // traitement de l'évent Debug
