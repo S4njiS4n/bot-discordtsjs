@@ -11,9 +11,9 @@ client.on("message", msg => { // traitement de l'évent NouveauMessage
 });
 
 client.on("guildMemberAdd", member => {
-  member.send("Salut à toi!");
-  const channel = client.channels.find(r => r.name === "general-bot");
-  channel.send(`${member} a rejoint le serveur !`);
+  member.send("Salut à toi!"); // Envoi du message privé au nouveau membre
+  const channel = client.channels.find(r => r.name === "general-bot"); // récupération du salon general-bot
+  channel.send(`${member} a rejoint le serveur !`); // Envoi du message log de connexion du nouveau membre au salon general-bot
 });
 
 client.login(TOKEN); // login du client instancié du bot au serveur discord
