@@ -7,8 +7,10 @@ client.on("ready", () => {
 });
 
 client.on("message", msg => {
-  if (msg.content.startsWith(`${PREFIX}ping`)) msg.channel.send("Pong!");
-  if (msg.content.startsWith(`${PREFIX}pong`)) msg.channel.send("Ping!");
+  const args = msg.content.split(/ +/g);
+  const cmd = args.shift().toLowerCase();
+  if (cmd === `${PREFIX}ping`) msg.channel.send("Pong!");
+  if (cmd === `${PREFIX}pong`) msg.channel.send("Ping!");
 });
 
 client.login(TOKEN);
