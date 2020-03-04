@@ -2,10 +2,6 @@ const { Client } = require("discord.js"); // ajout de la librairie disocrd.js
 const { TOKEN, PREFIX } = require("./config"); // configuration via le fichier config.js
 const client = new Client({ disableEveryone: true }); // instanciation du client discord.js et exlusion des messages @EveryOne depuis le bot
 
-client.on("ready", () => { // traitement de l'évent BotOnline
-  console.log("Je suis prêt !");
-});
-
 client.on("message", msg => { // traitement de l'évent NouveauMessage
   if (msg.author.bot) return; // exclusion du message du bot
   const args = msg.content.split(/ +/g); // séparation en argument de tous les groupes de mots issus d'une même commande
@@ -15,3 +11,7 @@ client.on("message", msg => { // traitement de l'évent NouveauMessage
 });
 
 client.login(TOKEN); // login du client instancié du bot au serveur discord
+
+// -----------------------------------
+
+client.on("ready", () => console.log("Je suis prêt !")); // traitement de l'évent BotOnline
